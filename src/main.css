@@ -1,0 +1,28 @@
+/* 1. Define Priority Layers */
+@layer reset, foundations, components, utilities;
+
+/* 2. Import Foundations (Your Uploaded Files) */
+@import "foundations/color-tokens.css" layer(foundations);
+@import "foundations/typography-tokens.css" layer(foundations);
+
+/* 3. Import Components (The files above) */
+@import "components/density.css" layer(components);
+@import "components/buttons.css" layer(components);
+@import "components/inputs.css" layer(components);
+@import "components/icons.css" layer(components);
+@import "components/controls.css" layer(components);
+@import "components/accordion.css" layer(components);
+@import "components/utilities.css" layer(utilities);
+
+/* 4. Basic Reset */
+
+@layer reset {
+  /* ... keep your existing reset ... */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { 
+    font-family: var(--font-family-base);
+    background-color: var(--color-background, #fff);
+    color: var(--color-text-main); 
+    transition: background-color 0.3s, color 0.3s;
+  }
+}

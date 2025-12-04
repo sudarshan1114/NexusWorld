@@ -1,0 +1,107 @@
+/* src/components/inputs.css */
+
+/* --- 1. Field Wrapper --- */
+.nxs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* UPDATED LABEL STYLING */
+.nxs-label {
+  display: block;
+  font-family: var(--font-family-base);
+  font-size: 0.75rem; /* Smaller */
+  text-transform: uppercase; /* Distinct from value */
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--color-grays-500); /* Muted */
+  line-height: 1;
+}
+
+.nxs-label.required:after { content: "*"; color: var(--color-error-500); margin-left: 2px; }
+
+/* --- 2. Input Group (THE FIX) --- */
+.nxs-input-group {
+  position: relative !important; /* Force relative positioning */
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Icons inside the group */
+.nxs-input-group .nxs-icon {
+  position: absolute !important; /* Force absolute */
+  top: 50% !important;
+  transform: translateY(-50%) !important; /* Perfect vertical center */
+  z-index: 10;
+  
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-grays-400);
+  pointer-events: none;
+}
+
+/* Explicit positioning */
+.nxs-input-group .nxs-icon-start { left: 0.75rem; }
+.nxs-input-group .nxs-icon-end   { right: 0.75rem; }
+
+/* --- 3. The Input Itself --- */
+.nxs-input {
+  display: block;
+  width: 100%;
+  height: var(--nxs-size-md);
+  padding: 0 var(--nxs-space-sm);
+  font-size: var(--nxs-font-md);
+  
+  border-radius: var(--nxs-radius);
+  font-family: var(--font-family-base);
+  
+  background-color: var(--color-surface); 
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  transition: all 0.2s ease;
+}
+
+/* Padding Logic */
+.nxs-input-group.has-icon-start .nxs-input { padding-left: 2.5rem; }
+.nxs-input-group.has-icon-end .nxs-input { padding-right: 2.5rem; }
+
+.nxs-input:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.nxs-input::placeholder { color: var(--color-grays-400); opacity: 1; }
+
+/* --- 4. Info Display (Read-Only Data) --- */
+.nxs-info-display {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--nxs-size-md);
+  padding: 0;
+  
+  /* Distinct Data Styling */
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  font-weight: 500; /* Medium weight */
+  color: var(--color-text-main); /* Dark/High Contrast */
+  
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+}
+
+/* --- 5. Disabled State (Gray Fix) --- */
+.nxs-input:disabled,
+.nxs-input[disabled] {
+  background-color: var(--color-grays-100) !important; 
+  color: var(--color-grays-400) !important;
+  cursor: not-allowed;
+  border-color: var(--color-grays-200) !important; 
+}
+
+/* --- Dark Mode --- */
+[data-theme="dark"] .nxs-input:disabled { background-color: rgba(255,255,255,0.05) !important; }

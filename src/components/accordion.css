@@ -1,0 +1,108 @@
+/* src/components/accordion.css */
+
+
+/* --- 0. Web Component Support --- */
+/* This ensures the custom tag behaves like a block element immediately, 
+   even before the JavaScript runs. */
+nxs-accordion {
+  display: block;
+  width: 100%;
+}
+
+/* --- 1. The Container --- */
+.nxs-accordion {
+  border: 1px solid var(--color-border);
+  border-radius: var(--nxs-radius);
+  background-color: var(--color-surface);
+  overflow: hidden; 
+}
+
+
+/* 1. The Container */
+.nxs-accordion {
+  border: 1px solid var(--color-border);
+  border-radius: var(--nxs-radius);
+  background-color: var(--color-surface);
+  overflow: hidden; /* Keeps child borders contained */
+}
+
+/* 2. The Item Wrapper */
+.nxs-accordion-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nxs-accordion-item:last-child {
+  border-bottom: none;
+}
+
+/* 3. The Trigger Button */
+.nxs-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* Spacing */
+  padding: 1rem var(--nxs-space-x);
+  
+  /* Reset Button Styles */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  
+  /* Typography */
+  font-family: var(--font-family-base);
+  font-size: var(--fs-body-b);
+  font-weight: 600;
+  color: var(--color-text-main);
+  text-align: left;
+  
+  transition: background-color 0.2s;
+}
+
+.nxs-accordion-trigger:hover {
+  background-color: var(--color-grays-50);
+}
+
+.nxs-accordion-trigger:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: -2px; /* Draws inside */
+  background-color: var(--color-grays-50);
+}
+
+/* 4. The Chevron Icon Animation */
+.nxs-accordion-trigger .nxs-icon {
+  transition: transform 0.3s ease;
+  color: var(--color-grays-500);
+}
+
+/* When JS sets aria-expanded="true", CSS rotates the icon */
+.nxs-accordion-trigger[aria-expanded="true"] .nxs-icon {
+  transform: rotate(180deg);
+  color: var(--color-primary-500);
+}
+
+/* 5. The Content Area (Animation Logic) */
+.nxs-accordion-content {
+  /* Default State: Closed */
+  max-height: 0;
+  overflow: hidden;
+  
+  /* Smooth Slide Animation */
+  transition: max-height 0.3s ease-out;
+  
+  background-color: var(--color-surface);
+}
+
+/* The inner padding wrapper prevents "jumpy" animation */
+.nxs-inner-padding {
+  padding: 1rem;
+    /*padding: 0 var(--nxs-space-x) 1.5rem var(--nxs-space-x);*/
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* --- Dark Mode Overrides --- */
+[data-theme="dark"] .nxs-accordion-trigger:hover {
+  background-color: var(--color-grays-800);
+}

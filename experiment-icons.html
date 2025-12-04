@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Nexus UI: Icon Component</title>
+        <link rel="stylesheet" href="dist/nexus.min.css" />
+
+        <style>
+            body {
+                padding: 3rem;
+                max-width: 900px;
+                margin: 0 auto;
+                background: var(--color-background);
+                color: var(--color-text-main);
+                font-family: sans-serif;
+            }
+            .row {
+                display: flex;
+                gap: 2rem;
+                margin-bottom: 2rem;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            code {
+                background: rgba(0, 0, 0, 0.1);
+                padding: 2px 5px;
+                border-radius: 4px;
+            }
+
+            /* Demo Container Styles for Context Examples */
+            .demo-box {
+                border: 1px solid var(--color-border);
+                border-radius: 8px;
+                padding: 1.5rem;
+                background: var(--color-surface);
+                width: 100%;
+            }
+
+            .mock-input-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                max-width: 300px;
+            }
+            .mock-input {
+                padding: 0.5rem;
+                border: 1px solid var(--color-border);
+                border-radius: 4px;
+                background: var(--color-background);
+            }
+            .helper-text {
+                font-size: 0.875rem;
+                color: var(--color-text-muted);
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Icon Web Component</h1>
+        <p>Replacing complex SVG tags with <code>&lt;nxs-icon name="..."&gt;</code>.</p>
+        <hr style="margin: 2rem 0; border-top: 1px solid var(--color-border)" />
+
+        <h3>1. Basic Usage</h3>
+        <div class="row">
+            <div>
+                <strong>Old Way (Raw SVG):</strong><br />
+                <svg class="nxs-icon"><use href="dist/nexus-icons.svg#user"></use></svg>
+            </div>
+            <div>
+                <strong>New Way (Web Component):</strong><br />
+                <nxs-icon name="user"></nxs-icon>
+            </div>
+        </div>
+
+        <h3>2. Button Integration</h3>
+        <div class="row">
+            <button class="nxs-btn">
+                <nxs-icon name="settings"></nxs-icon>
+                <span>Settings</span>
+            </button>
+
+            <button class="nxs-btn nxs-btn-secondary">
+                <nxs-icon name="log-in"></nxs-icon>
+                <span>Log In</span>
+            </button>
+
+            <button class="nxs-btn nxs-btn-secondary" disabled>
+                <nxs-icon name="log-out"></nxs-icon>
+                <span>Disabled</span>
+            </button>
+        </div>
+
+        <hr style="margin: 2rem 0; border-top: 1px solid var(--color-border)" />
+        <h3>3. System State Colors</h3>
+        <p >Using classes <code>.nxs-icon-{state}</code> mapped to system tokens.</p>
+
+        <div class="row">
+            <div style="text-align: center">
+                <nxs-icon name="check-circle" class="nxs-icon-success" style="font-size: 1rem"></nxs-icon>
+                <br /><small>Success</small>
+            </div>
+            <div style="text-align: center">
+                <nxs-icon name="alert-triangle" class="nxs-icon-warning" style="font-size: 1rem"></nxs-icon>
+                <br /><small>Warning</small>
+            </div>
+            <div style="text-align: center">
+                <nxs-icon name="x-circle" class="nxs-icon-error" style="font-size: 1rem"></nxs-icon>
+                <br /><small>Error</small>
+            </div>
+            <div style="text-align: center">
+                <nxs-icon name="info" class="nxs-icon-info" style="font-size: 1rem"></nxs-icon>
+                <br /><small>Info</small>
+            </div>
+            <div style="text-align: center">
+                <nxs-icon name="trash" class="nxs-icon-disabled" style="font-size: 1rem"></nxs-icon>
+                <br /><small>Disabled</small>
+            </div>
+        </div>
+
+        <hr style="margin: 2rem 0; border-top: 1px solid var(--color-border)" />
+        <h3>4. Contextual Sizes & Patterns</h3>
+
+        <div class="row" style="align-items: flex-start">
+            <div class="demo-box" style="flex: 1">
+                <strong>Input Helper Text (XS Icon)</strong>
+                <br /><br />
+                <div class="mock-input-group">
+                    <label style="font-size: 0.875rem; font-weight: bold">Password</label>
+                    <input type="password" class="mock-input" value="12345" />
+
+                    <div class="helper-text">
+                        <nxs-icon name="info" class="nxs-icon-sm" style="font-size: .75rem;"></nxs-icon>
+                        <span>Must be at least 8 characters</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box" style="flex: 1">
+                <strong>Modal Header (LG Icon)</strong>
+                <br /><br />
+                <div
+                    style="
+                        border: 1px solid var(--color-border);
+                        border-radius: 8px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                    ">
+                    <div
+                        style="
+                            background: var(--color-surface);
+                            padding: 1rem;
+                            border-bottom: 1px solid var(--color-border);
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                        ">
+                        <div style="background: var(--color-error-50); padding: 0.5rem; border-radius: 50%">
+                            <nxs-icon name="trash-2" class="nxs-icon-lg nxs-icon-error"></nxs-icon>
+                        </div>
+
+                        <div>
+                            <h4 style="margin: 0">Delete Account</h4>
+                            <small style="color: var(--color-text-muted)">Are you sure?</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="demo-box" style="text-align: center; padding: 3rem">
+                <strong>Empty State (XL Icon)</strong>
+                <br /><br />
+
+                <nxs-icon name="inbox" class="nxs-icon-xl" style="color: var(--color-grays-200)"></nxs-icon>
+
+                <h3 style="margin: 0.5rem 0 0; color: var(--color-grays-500)">No Messages</h3>
+                <p style="color: var(--color-grays-400); margin-top: 0">Your inbox is empty.</p>
+            </div>
+        </div>
+
+        <hr style="margin: 2rem 0; border-top: 1px solid var(--color-border)" />
+        <h3>5. Dynamic Javascript Update</h3>
+        <div
+            class="row"
+            style="
+                background: var(--color-surface);
+                padding: 1rem;
+                border: 1px solid var(--color-border);
+                border-radius: 8px;
+            ">
+            <div>
+                <strong>Click to Swap:</strong><br />
+                <nxs-icon id="dynamicIcon" name="user" class="nxs-icon-lg" style="color: var(--color-secondary-500);"></nxs-icon>
+            </div>
+            <button class="nxs-btn nxs-btn-sm" onclick="toggleIcon()">Swap Icon</button>
+        </div>
+
+        <script src="src/js/nexus-icon-wc.js"></script>
+
+        <script>
+            function toggleIcon() {
+                const el = document.getElementById("dynamicIcon");
+                const current = el.getAttribute("name");
+                el.setAttribute("name", current === "user" ? "settings" : "user");
+            }
+        </script>
+    </body>
+</html>

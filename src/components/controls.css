@@ -1,0 +1,118 @@
+/* src/components/controls.css */
+
+.nxs-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-family-base);
+  font-size: var(--fs-body-b);
+  color: var(--color-text-main);
+}
+
+.nxs-control input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* --- CHECKBOX --- */
+.nxs-checkmark {
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.nxs-control input:checked ~ .nxs-checkmark {
+  background-color: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+}
+
+.nxs-checkmark:after {
+  content: "";
+  display: none;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.nxs-control input:checked ~ .nxs-checkmark:after { display: block; }
+
+/* --- RADIO --- */
+.nxs-radio {
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.nxs-control input:checked ~ .nxs-radio {
+  border-color: var(--color-primary-500);
+  box-shadow: inset 0 0 0 4px var(--color-primary-500);
+}
+
+/* --- TOGGLE --- */
+.nxs-toggle {
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  background-color: var(--color-grays-300);
+  border-radius: 99px;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+
+.nxs-toggle:before {
+  content: "";
+  position: absolute;
+  height: 1.1rem;
+  width: 1.1rem;
+  left: 0.2rem;
+  bottom: 0.2rem;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.nxs-control input:checked ~ .nxs-toggle { background-color: var(--color-success-500); }
+.nxs-control input:checked ~ .nxs-toggle:before { transform: translateX(1.25rem); }
+
+/* --- DISABLED STATES --- */
+.nxs-control.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Force gray on visual elements */
+.nxs-control.disabled .nxs-checkmark,
+.nxs-control.disabled .nxs-radio,
+.nxs-control.disabled .nxs-toggle {
+  background-color: var(--color-grays-200) !important;
+  border-color: var(--color-grays-300) !important;
+}
+
+/* Disabled Checked State (Darker Gray) */
+.nxs-control.disabled input:checked ~ .nxs-checkmark {
+  background-color: var(--color-grays-400) !important;
+  border-color: var(--color-grays-400) !important;
+}
+
+/* Dark Mode */
+[data-theme="dark"] .nxs-checkmark, [data-theme="dark"] .nxs-radio { background-color: rgba(255,255,255,0.05); }

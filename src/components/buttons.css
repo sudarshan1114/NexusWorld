@@ -1,0 +1,72 @@
+/* src/components/buttons.css */
+
+/* src/components/buttons.css */
+
+.nxs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em; 
+  
+  height: var(--nxs-size-md);
+  padding: 0 var(--nxs-space-md);
+  font-size: var(--nxs-font-md);
+  
+  border-radius: var(--nxs-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  text-decoration: none;
+  user-select: none;
+  
+  background-color: var(--color-primary-500);
+  color: #ffffff;
+}
+
+.nxs-btn:hover {
+  background-color: var(--color-primary-600);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.nxs-btn:active { transform: translateY(1px); }
+
+/* --- FIXED DISABLED STATE --- */
+.nxs-btn:disabled,
+.nxs-btn[disabled],
+.nxs-btn.is-disabled {
+  /* Using !important to guarantee gray override */
+  background-color: var(--color-grays-300) !important; 
+  border-color: transparent !important;
+  color: var(--color-grays-500) !important;
+  
+  cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* Secondary Button */
+.nxs-btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-grays-300);
+  color: var(--color-grays-800);
+}
+.nxs-btn-secondary:hover { background-color: var(--color-grays-50); }
+
+/* Secondary Disabled */
+.nxs-btn-secondary:disabled,
+.nxs-btn-secondary[disabled] {
+  background-color: transparent !important;
+  border-color: var(--color-grays-200) !important;
+  color: var(--color-grays-300) !important;
+}
+
+/* Sizing Modifiers */
+.nxs-btn-sm { height: var(--nxs-size-sm); padding: 0 var(--nxs-space-sm); font-size: var(--nxs-font-sm); }
+.nxs-btn-lg { height: var(--nxs-size-lg); padding: 0 var(--nxs-space-lg); font-size: var(--nxs-font-lg); }
+.nxs-btn-xl { height: var(--nxs-size-xl); padding: 0 var(--nxs-space-xl); font-size: var(--nxs-font-xl); }
+
+/* Dark Mode */
+[data-theme="dark"] .nxs-btn-secondary { border-color: var(--color-grays-600); color: var(--color-grays-100); }
+[data-theme="dark"] .nxs-btn:disabled { background-color: var(--color-grays-800) !important; color: var(--color-grays-600) !important; }

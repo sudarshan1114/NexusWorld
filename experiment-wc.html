@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>Nexus UI: Web Component Experiment</title>
+    
+    <link rel="stylesheet" href="dist/nexus.min.css">
+    
+    <style>
+        body { padding: 3rem; max-width: 800px; margin: 0 auto; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+
+    <h1>Web Component Experiment</h1>
+    <p class="text-muted" style="margin-bottom: 2rem;">
+        The element below is a custom <code>&lt;nxs-accordion&gt;</code> tag. 
+        It uses your existing CSS, but the JavaScript logic is encapsulated inside the HTML tag itself.
+    </p>
+
+    <nxs-accordion>
+        
+        <div class="nxs-accordion-item">
+            <button class="nxs-accordion-trigger" aria-expanded="false" aria-controls="wc-1">
+                <span>Section 1 (Web Component)</span>
+                <svg class="nxs-icon" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </button>
+            <div id="wc-1" class="nxs-accordion-content">
+                <div class="nxs-inner-padding">
+                    This logic is running inside a custom class extending <strong>HTMLElement</strong>.
+                </div>
+            </div>
+        </div>
+
+        <div class="nxs-accordion-item">
+            <button class="nxs-accordion-trigger" aria-expanded="false" aria-controls="wc-2">
+                <span>Does styling still work?</span>
+                <svg class="nxs-icon" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </button>
+            <div id="wc-2" class="nxs-accordion-content">
+                <div class="nxs-inner-padding">
+                    <p class="text-success font-medium">Yes!</p>
+                    <p>Because we didn't use Shadow DOM, the global styles apply perfectly.</p>
+                </div>
+            </div>
+        </div>
+
+    </nxs-accordion>
+
+    <script src="src/js/nexus-accordion-wc.js"></script>
+
+</body>
+</html>

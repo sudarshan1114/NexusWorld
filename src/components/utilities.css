@@ -1,0 +1,34 @@
+/* src/components/utilities.css */
+
+/* --- 1. State Text Colors --- */
+.text-success { color: var(--color-success-600); }
+.text-error   { color: var(--color-error-600); }
+.text-warning { color: var(--color-warning-700); } /* Darker for readability on white */
+.text-info    { color: var(--color-information-600); }
+.text-muted   { color: var(--color-text-muted); }
+
+/* --- 2. Typography Utilities --- */
+.text-body-l { font-size: var(--fs-body-l); }
+.text-body-b { font-size: var(--fs-body-b); }
+.text-body-s { font-size: var(--fs-body-s); }
+
+/* Helper Text (Caption) */
+.text-helper {
+  font-size: var(--fs-helper); /* 0.75rem */
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+/* Extra Small (Legal/Footer) */
+.text-xs {
+  font-size: var(--fs-small); /* 0.65rem */
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- 3. Weight Utilities --- */
+.font-bold { font-weight: 700; }
+.font-medium { font-weight: 500; }
+.font-regular { font-weight: 400; }

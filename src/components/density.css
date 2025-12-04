@@ -1,0 +1,40 @@
+:root {
+    /* Mobile First (Touch Target: ~48px) */
+    --nxs-height-control: 3rem;
+    --nxs-space-x: 1.5rem;
+    --nxs-space-y: 0.75rem;
+
+    /* --- 1. Sizing Tokens (Height) --- */
+    --nxs-size-sm: 32px; /* Desktop: Dense/Compact */
+    --nxs-size-md: 40px; /* Desktop: Standard */
+    --nxs-size-lg: 48px; /* Mobile: Standard Touch Target */
+    --nxs-size-xl: 64px; /* TV / Hero Sections */
+
+    /* --- 2. Spacing Tokens (Padding X) --- */
+    --nxs-space-xs: 0.5rem;
+    --nxs-space-sm: 0.75rem;
+    --nxs-space-md: 1.25rem;
+    --nxs-space-lg: 1.5rem;
+    --nxs-space-xl: 2rem;
+    --nxs-space-xxl: 3rem;
+
+    /* --- 3. Font Scaling for Buttons --- */
+    /* We use calc to slightly adjust font size based on button height */
+    --nxs-font-sm: 0.875rem; /* 14px */
+    --nxs-font-md: 1rem; /* 16px */
+    --nxs-font-lg: 1.125rem; /* 18px */
+    --nxs-font-xl: 1.5rem; /* 24px */
+
+    /* --- 4. Global Radius --- */
+    --nxs-radius: 6px;
+}
+
+/* Desktop Density (Compact: ~40px) */
+@media (min-width: 1024px) {
+    :root {
+        --nxs-height-control: 2.5rem;
+        --nxs-radius: 4px;
+        --nxs-space-x: 1.25rem;
+        --nxs-space-y: 0.5rem;
+    }
+}
