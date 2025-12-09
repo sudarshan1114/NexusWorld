@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus UI: Icon Library</title>
+    
+    <link rel="stylesheet" href="dist/nexus.min.css">
+    
+    <style>
+        /* --- Page Specific Styles --- */
+        body {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--color-background);
+            color: var(--color-text-main);
+            font-family: var(--font-family-base, sans-serif);
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 { margin: 0; font-size: 1.5rem; }
+
+        /* Controls Toolbar */
+        .toolbar {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--color-surface);
+            border-radius: 8px;
+            align-items: center;
+        }
+
+        /* The Grid Layout */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 2rem; /* Space between icons */
+        }
+
+        /* Individual Icon Wrapper */
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* NO BORDERS or BACKGROUNDS as requested */
+            background: transparent;
+            padding: 0.5rem;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .icon-item:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            color: var(--color-primary-600);
+        }
+
+        /* Icon Name Label */
+        .icon-label {
+            margin-top: 0.75rem;
+            font-family: monospace; /* Mono font */
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>Icon Gallery</h1>
+            <p style="color: var(--color-text-muted); margin-top: 0.5rem;">
+                Source: <code>src/icons/</code>
+            </p>
+        </div>
+        <a href="index.html" class="nxs-btn nxs-btn-sm nxs-btn-secondary">Back to Home</a>
+    </header>
+
+    <div class="toolbar">
+        <label class="nxs-label" style="margin:0;">Preview Size:</label>
+        <select id="sizeSelect" class="nxs-input nxs-input-sm" style="width: auto;">
+            <option value="nxs-icon-xs">XS (12px)</option>
+            <option value="nxs-icon-sm">SM (16px)</option>
+            <option value="nxs-icon-md" selected>MD (24px)</option>
+            <option value="nxs-icon-lg">LG (32px)</option>
+            <option value="nxs-icon-xl">XL (48px)</option>
+        </select>
+
+        <label class="nxs-label" style="margin:0; margin-left: 1rem;">Color Context:</label>
+        <select id="colorSelect" class="nxs-input nxs-input-sm" style="width: auto;">
+            <option value="">Default (CurrentColor)</option>
+            <option value="nxs-icon-success">Success</option>
+            <option value="nxs-icon-warning">Warning</option>
+            <option value="nxs-icon-error">Error</option>
+            <option value="nxs-icon-info">Info</option>
+        </select>
+    </div>
+
+    <div id="grid" class="icon-grid"></div>
+
+    <script src="src/js/nexus-icon-wc.js"></script>
+
+    <script>
+        // Generated list based on your file tree
+        // Note: I have corrected likely typos (e.g., 'loin' -> 'log-in')
+        // Please rename your actual files in src/icons/ to match these IDs.
+        const icons = [
+            "ai-summary-doc",
+            "alert-triangle",
+            "arrow-down",
+            "arrow-left",
+            "arrow-right",
+            "arrow-up",
+            "check-circle",
+            "chevron-down",
+            "chevron-left",
+            "chevron-right",
+            "chevron-up",       /* Rename 'chevron-up copy.svg' to this */
+            "client-business",
+            "client-finance",
+            "client-tag",
+            "inbox",
+            "info",
+            "lock",
+            "log-in",           /* Rename 'loin.svg' to this */
+            "log-out",          /* Rename 'loout.svg' to this */
+            "plus",
+            "search",
+            "settings",
+            "sliders",
+            "trash",
+            "user",
+            "users",
+            "user-check",
+            "user-circle",
+            "user-cog",
+            "user-lock",
+            "user-minus",
+            "user-plus",
+            "user-x",
+            "x-circle"
+        ];
+
+        const grid = document.getElementById('grid');
+        const sizeSelect = document.getElementById('sizeSelect');
+        const colorSelect = document.getElementById('colorSelect');
+
+        function render() {
+            // Sort alphabetically
+            icons.sort();
+
+            grid.innerHTML = icons.map(name => `
+                <div class="icon-item">
+                    <nxs-icon name="${name}" class="target-icon nxs-icon-md"></nxs-icon>
+                    <span class="icon-label">${name}</span>
+                </div>
+            `).join('');
+        }
+
+        function updateStyles() {
+            const allIcons = document.querySelectorAll('.target-icon');
+            const size = sizeSelect.value;
+            const color = colorSelect.value;
+
+            allIcons.forEach(icon => {
+                // Remove all modifier classes first
+                icon.classList.remove(
+                    'nxs-icon-xs', 'nxs-icon-sm', 'nxs-icon-md', 'nxs-icon-lg', 'nxs-icon-xl',
+                    'nxs-icon-success', 'nxs-icon-warning', 'nxs-icon-error', 'nxs-icon-info'
+                );
+                // Add selected classes
+                if(size) icon.classList.add(size);
+                if(color) icon.classList.add(color);
+            });
+        }
+
+        sizeSelect.addEventListener('change', updateStyles);
+        colorSelect.addEventListener('change', updateStyles);
+
+        // Run
+        render();
+    </script>
+</body>
+</html>
